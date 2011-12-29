@@ -7,20 +7,19 @@ import org.springframework.beans.factory.NoSuchBeanDefinitionException;
 
 import com.botreeconsulting.utils.XMLHelper;
 
-
 public class ReflectionXMLBeanFactory {
 
 	private Map<String, Object> mapOfBeans;
-	
+
 	private ReflectionXMLBeanFactory() {
-		loadBeanDefinitaions();
+		loadBeanDefinitions();
 	}
-	
+
 	/**
 	 * Loads bean definitions from application-context.xml
 	 */
-	private void loadBeanDefinitaions() {
-		
+	private void loadBeanDefinitions() {
+
 		mapOfBeans = new HashMap<String, Object>();
 		mapOfBeans.put("car", getInstanceByBeanName("car"));
 		mapOfBeans.put("bus", getInstanceByBeanName("bus"));
@@ -33,17 +32,20 @@ public class ReflectionXMLBeanFactory {
 	 * @return
 	 */
 	private Object getInstanceByBeanName(String beanName) {
-		
+
 		String fullyQualifiedClass = XMLHelper.getFullyQualifiedClass(beanName);
-		
+	
+		Class<?> class1;
 		try {
-			
-			Class<?> class1 = Class.forName(fullyQualifiedClass);
+			class1 = Class.forName(fullyQualifiedClass);
 			return class1.newInstance();
-			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		} catch (ClassNotFoundException classNotFoundException) {
+			classNotFoundException.printStackTrace();
+		} catch (IllegalAccessException illegalAccessException) {
+			illegalAccessException.printStackTrace();
+		} catch (InstantiationException instantiationException) {			
+			instantiationException.printStackTrace();
+		}		
 		return null;
 	}
 
@@ -58,7 +60,7 @@ public class ReflectionXMLBeanFactory {
 
 	/**
 	 * Get the unique instance of this class
-	 *     
+	 * 
 	 * @return
 	 */
 	public static ReflectionXMLBeanFactory getInstance() {
@@ -66,13 +68,14 @@ public class ReflectionXMLBeanFactory {
 	}
 
 	/**
-	 * Return an instance, which may be shared or independent, of the specified bean with name <code>beanName</code> 
+	 * Return an instance, which may be shared or independent, of the specified
+	 * bean with name <code>beanName</code>
 	 * 
 	 * @param beanName
 	 * @return
 	 */
 	public Object getBean(String beanName) {
-		if(!mapOfBeans.containsKey(beanName))
+		if (!mapOfBeans.containsKey(beanName))
 			throw new NoSuchBeanDefinitionException(beanName);
 		return mapOfBeans.get(beanName);
 	}
