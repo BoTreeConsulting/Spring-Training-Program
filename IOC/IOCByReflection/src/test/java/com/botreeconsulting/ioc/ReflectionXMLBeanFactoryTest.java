@@ -18,14 +18,10 @@ public class ReflectionXMLBeanFactoryTest {
 	}
 	
 	@Test
-	public void testGetCarInstance() {
-		
-		Object bean = factory.getBean("car");
-		
-		assertNotNull("Car instance should not be null",bean);
-		
-		assertEquals(Car.class, bean.getClass());
-		
+	public void testGetCarInstance() {		
+		Object bean = factory.getBean("car");		
+		assertNotNull("Car instance should not be null", bean);		
+		assertEquals(Car.class, bean.getClass());		
 	}
 
 	@Test(expected=NoSuchBeanDefinitionException.class)
@@ -34,13 +30,9 @@ public class ReflectionXMLBeanFactoryTest {
 	}
 	
 	@Test
-	public void testGetBusInstance() {
-		
-		Object bean = factory.getBean("bus");
-		
-		assertNotNull("Bus instance should not be null",bean);
-		
-		assertEquals(Bus.class, bean.getClass());
-		
+	public void testGetBusInstance() {		
+		Object bean = factory.getBean("bus");		
+		assertNotNull("Bus instance should not be null",bean);		
+		assertEquals(Bus.class, bean.getClass());		
 	}
 }
