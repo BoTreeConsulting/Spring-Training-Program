@@ -12,7 +12,7 @@
   </properties>
 
   <build>
-	<finalName>SpringJPAHibernate</finalName>
+	<finalName>DPProxy</finalName>
 	<plugins>
 		<plugin>
 			<groupId>org.apache.maven.plugins</groupId>
