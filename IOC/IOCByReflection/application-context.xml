@@ -1,0 +1,4 @@
+<beans>
+	<bean name="car" class="com.botreeconsulting.ioc.Car" />
+	<bean name="bus" class="com.botreeconsulting.ioc.Bus" />
+</beans>
