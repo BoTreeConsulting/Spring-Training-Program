@@ -1,0 +1,28 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.botreeconsulting.lms.hibernate.xml.model">
+	<class name="User" table="USER" >
+		<id name="id" type="long" column="userId">
+			<generator class="native" />
+		</id>
+		<property name="firstName" type="string" not-null="true"/>
+		<property name="lastName" type="string" not-null="true"/>
+		<property name="contactNumber" type="string" not-null="true" />
+		<property name="address" type="string" not-null="true"/>
+		<property name="role" not-null="true">
+			<type name="org.hibernate.type.EnumType">
+				<param name="enumClass">com.botreeconsulting.lms.hibernate.xml.model.Role</param>
+			</type>	
+		</property>
+		
+		<!-- 
+			A unidirectional one-to-many association on a join table.
+			Specifying unique="true", changes the multiplicity from many-to-many to one-to-many. 
+		-->
+		<set name="books" table="UserBook">
+			<key column="userId" />
+			<many-to-many column="bookId" class="Book" unique="true" />
+		</set>
+		
+	</class>
+</hibernate-mapping>

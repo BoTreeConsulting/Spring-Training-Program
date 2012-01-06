@@ -1,0 +1,28 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.botreeconsulting.lms.hibernate.xml.model">
+	<class name="Author" table="AUTHOR" >
+		<!--
+			The types declared and used in the mapping files are not Java data types; 
+			they are not SQL database types either. These types are called Hibernate mapping
+			types, converters which can translate from Java to SQL data types and vice versa.
+			Again, Hibernate will try to determine the correct conversion and mapping type
+			itself if the type attribute is not present in the mapping.
+		 -->
+		<id name="id" type="long" column="authorId">
+			<generator class="native" />
+		</id>
+		<property name="firstName" type="string" not-null="true"/>
+		<property name="lastName" type="string" not-null="true"/>
+		
+		<!-- 
+		      1) Book will act as the relationship owner in this bidirectional relation
+		      2) In bidirectional relation - cascade attribute is to be present at both the ends of relation.  
+		-->
+		<set name="books" table="BookAuthor" inverse="true" cascade="save-update">
+			<key column="authorId" />
+			<many-to-many column="bookId" class="Book" />
+		</set>
+		
+	</class>
+</hibernate-mapping>

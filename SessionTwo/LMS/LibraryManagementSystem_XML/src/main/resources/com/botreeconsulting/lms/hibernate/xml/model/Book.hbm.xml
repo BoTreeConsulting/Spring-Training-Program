@@ -1,0 +1,47 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.botreeconsulting.lms.hibernate.xml.model">
+	<class name="Book" table="BOOK" >
+		<id name="id" type="long" column="bookId">
+			<generator class="native" />
+		</id>
+		<property name="isbn" type="string" not-null="true" unique="true"/>
+		<property name="title" type="string" not-null="true"/>
+		<property name="pages" type="int" />
+		<property name="totalCopies" type="int" not-null="true"/>
+		<property name="copiesAvailable" type="int" not-null="true" />
+		<property name="availabilityStatus" not-null="true">
+			<type name="org.hibernate.type.EnumType">
+				<param name="enumClass">com.botreeconsulting.lms.hibernate.xml.model.AvailabilityStatus</param>
+			</type>	
+		</property>
+		
+		<!-- 
+		      1. Unidirectional many-to-one on a foreign key
+		      2. It is possible that there is no publisher detail available when adding a book
+		         Thus using default not-null="false" on publisher property. 
+		-->
+		<many-to-one name="publisher" column="publisherId" cascade="save-update"/>
+		
+		<!-- 
+		      1. Uses inverse="false"
+		      2. The "cascade" attribute tells Hibernate to make any new Author
+		         instance persistent (that is, save it in the database) 
+		         if the Author is referenced by a persistent Book.
+		         
+		         The cascade attribute is directional: It applies to only one 
+		         end of the association.
+		-->
+		<set name="authors" table="BookAuthor" cascade="save-update">
+			<key column="bookId" />
+			<many-to-many column="authorId" class="Author" />
+		</set>
+		
+		<!-- Uses inverse="false" -->
+		<set name="categories" table="BookCategory" cascade="save-update">
+			<key column="bookId" />
+			<many-to-many column="categoryId" class="Category" />
+		</set>
+		
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,29 @@
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="com.botreeconsulting.lms.hibernate.xml.model">
+	<class name="Category" table="CATEGORY" >
+		<id name="id" type="long" column="categoryId">
+			<generator class="native" />
+		</id>
+		<property name="categoryCode" type="string" not-null="true" unique="true"/>
+		<property name="categoryName" type="string" not-null="true"/>
+		
+		<!--
+			The “inverse” keyword is always declare in one-to-many and many-to-many relationship (many-to-one doesn’t has inverse keyword), 
+			it means which side is responsible to take care of the relationship.
+			
+			In Hibernate, only the “relationship owner” should maintain the relationship, and the “inverse” keyword is 
+			created to define which side is the owner to maintain the relationship.
+			
+			In short, inverse=”true” means this is the relationship owner, and inverse=”false” (default) means it’s not.
+			
+			Reference: http://www.mkyong.com/hibernate/inverse-true-example-and-explanation/
+			
+			In present case Book will be the relationship owner
+		 -->
+		<set name="books" table="BookCategory" inverse="true">
+			<key column="categoryId" />
+			<many-to-many column="bookId" class="Book" />
+		</set>
+	</class>
+</hibernate-mapping>
