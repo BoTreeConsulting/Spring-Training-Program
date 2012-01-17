@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="windows-1252"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context-3.0.xsd
+       http://www.springframework.org/schema/mvc
+       http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
+       http://www.springframework.org/schema/aop
+       http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+       http://www.springframework.org/schema/tx
+       http://www.springframework.org/schema/tx/spring-tx-3.0.xsd">
+ 
+  <!-- Use @Component annotations for bean definitions -->
+  <context:component-scan base-package="com.botreeconsulting.springmvc.web"/>
+ 
+  <!--
+        This tag:
+        
+        a) registers the org.springframework.web.servlet.mvc.annotation.DefaultAnnotationHandlerMapping
+           and org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter
+           beans that are required for Spring MVC to dispatch requests to @Controllers.
+       
+        b) configures the above beans with defaults based on what is present in your classpath.
+           Defaults are:
+                b.1) Support for org.springframework.core.convert.ConversionService
+                     in addition to JavaBeans java.beans.PropertyEditor during Data Binding.
+                b.2) Support for formatting:
+                        b.2.1) Number fields using the org.springframework.format.annotation.NumberFormat annotation.
+                        b.2.2) Date, Calendar, Long and Joda Time fields using the org.springframework.format.annotation.DateTimeFormat
+                               annotation, if Joda Time 1.3 or higher is present on the classpath.
+                b.3) Support for validating @Controller inputs with @Valid if a JSR-303 Provider is present on the
+                     classpath.
+                b.4) Support for reading and writing XML, if JAXB is present on the classpath.
+                b.5) Support for reading and writing JSON, if Jackson JSON Processor is present on the classpath.
+   -->
+  <mvc:annotation-driven />
+  
+  <bean id="viewResolver"
+        class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+
+        <property name="prefix">
+            <value>/WEB-INF/views/</value>
+        </property>
+        <property name="suffix">
+            <value>.jsp</value>
+        </property>
+   </bean>
+    
+</beans>
