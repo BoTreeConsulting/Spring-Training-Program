@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+	<bean id="secretMessage" class="com.botreeconsulting.aop.SecretMessage">
+		<property name="message" value="Hello World using Spring - AOP"></property>
+	</bean>
+
+	<bean id="broadcaster" class="com.botreeconsulting.aop.Broadcaster">
+		<property name="secretMessage" ref="secretMessage"></property>
+	</bean>
+	
+	<bean id="broadcastAdvice" class="com.botreeconsulting.aop.BroadcastAdvice">
+	</bean>
+	
+	<!-- Advisor -->	
+	<bean id="broadcastAdvisor" class="org.springframework.aop.support.RegexpMethodPointcutAdvisor">
+		<property name="advice" ref="broadcastAdvice"></property>
+		<property name="pattern" value=".*broadcast"></property>
+	</bean>
+	
+	<bean id="broadcasterProxy" class="org.springframework.aop.framework.ProxyFactoryBean">		
+		<property name="target" ref="broadcaster"></property>
+		<property name="interceptorNames">
+			<list>
+				<value>broadcastAdvisor</value>		
+			</list>
+		</property>
+	</bean>	
+</beans>

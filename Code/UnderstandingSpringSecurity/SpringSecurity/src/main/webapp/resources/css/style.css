@@ -1,0 +1,561 @@
+*{
+	margin:0px;
+	padding:0px;
+}
+html {
+overflow-Y: scroll;
+} 
+
+*, * focus {
+	outline: none;
+	margin: 0;
+	padding: 0;
+} 
+
+
+body{
+	
+	font-family:Arial, Helvetica, sans-serif;
+
+}
+
+
+#main{
+	margin:0px auto;
+	padding:0px;
+	width:960px;
+	font:normal 11px Arial, Helvetica, sans-serif;
+	
+}
+
+#header{
+	float:left;
+	margin:0px;
+	padding:0px;
+	width:960px;
+}
+
+.blue_line{
+	float:left;
+	margin:0px;
+	padding:0px;
+	width:960px;
+	height:20px;
+	background-color:#005177;
+}
+.lft_tile{
+	float:left;
+	margin:0px;
+	padding:0px;
+	background:url(images/top-left-tile.jpg) left top repeat-x;	
+	padding-left: 25px;
+}
+.lft_tile img{
+	margin:0px;
+	/*padding:25px 0px 0px 20px;*/
+}
+h1.search-heading{
+	float:left;
+	width:890px;
+	font:bold 18px Arial, Helvetica, sans-serif;
+	color: rgb(0, 81, 119);
+	padding:10px 0px 0px 30px;	
+}
+#container{
+	float:left;
+	margin:0px;
+	padding:0px 0px 100px 0px;	
+	width:960px;
+	background:#fdfdfd url(images/top-left-tile.jpg) left bottom repeat-x;
+}
+.submit_form{
+	/*float:left;*/
+	margin:0;
+	padding:30px 0px 0px 0px;	
+	width:900px;
+	text-align:center;
+	clear:both;
+	margin-left:30px;
+}
+
+.submit_form ul{
+	float:left;
+	margin:0px;
+	padding:0px 0px 0px 75px;	
+	width:590px;
+	list-style:none;
+}
+.submit_form ul li.booking {
+	padding: 20px 0px 0px 0px;
+	float:left;
+	list-style:none;
+	
+	width:80px;
+}
+
+
+form{
+	margin:0px;
+	padding:0px;	
+}
+.login_box{
+	margin:auto;
+	padding:100px 0px 5px 0px;	
+	width:400px;
+	
+	
+}
+
+.login_box h1{
+	font:bold 16px Arial, Helvetica, sans-serif;
+	border-bottom:#005177 solid 1px;
+	width:400px;
+	padding-bottom:5px;
+}
+
+.login_box ul{
+	float:left;
+	margin:0px;
+	padding:10px 0px 0px 0px;	
+	list-style:none;
+	width:400px;
+	display:block;
+}
+
+.login_box ul li.loginform, ul li.loginform-submit, .block ul li.loginform, ul li.loginform-small{
+	padding-top:15px;
+	float:left;
+	list-style:none;	
+	width:413px;
+	
+}
+ul li.loginform-part1{
+	padding-top:15px;
+	float:left;
+	list-style:none;
+	width:170px;
+}
+ ul li.loginform-small{
+	 	padding-top:3px;
+ }
+.block ul li.loginform, ul li.loginform-small, li.loginform-part1{
+	
+	padding-left:28px;
+}
+
+ul li.loginform label, ul li.loginform label.small, ul li.loginform-part1 label{
+	float:left;
+	font:bold 12px Arial, Helvetica, sans-serif;
+	color:#000;	
+	width:150px;
+}
+ul li.loginform-small label{
+	float:left;
+	font:bold 11px Arial, Helvetica, sans-serif;
+	color:#000;
+	width:150px;
+}
+ul li.loginform label.small{
+	width:100px;
+	
+}
+ul li.loginform input, select{
+	float:left;
+	font:normal 12px Arial, Helvetica, sans-serif;
+	color:#000;	
+	width:140px;
+	height:20px;
+	//border:#005177 solid 1px;
+	
+}
+ul li.loginform-small input{
+	float:left;
+	font:normal 12px Arial, Helvetica, sans-serif;
+	color:#000;	
+	width:40px;
+	height:20px;
+	border:#005177 solid 1px;
+	
+}
+ul li.loginform-part1 input[type=checkbox]{
+	float:left;
+	width:auto;
+	border:#005177 solid 0px;
+	
+}
+ul li.loginform input[type=checkbox]{
+	width:auto;
+	border:#005177 solid 0px;
+}
+ ul li.loginform-submit{
+	 float:left;
+	 width:200px;
+	 padding-left:95px;
+ }
+li.loginform-submit input.submit, li.loginform-submit input.reset, li.booking input.submit, li.booking input.reset{
+	border:#000000 outset 1px;
+	width:60px;
+	height:25px;
+	color:#000000;
+	text-align:center;
+	font:bold 12px Arial, Helvetica, sans-serif;
+	margin-left:5px;
+	background:#ffffff;
+	cursor:pointer;
+}
+
+/*  Booking CSS */
+
+#lft_part{
+		float:left;
+		width:440px;
+		margin:10px 0px 0px 30px;
+		padding:0px;
+		
+}
+#rgt_part{
+		float:left;
+		width:440px;
+		margin:10px 0px 0px 20px;
+		padding:0px;
+}
+.booking_box{
+		float:left;
+		_width:400px;
+		margin:0px;
+		padding:10px 0px 0px 0px;
+		
+}
+
+/* Toggle CSS  */
+	h2.trigger {
+		padding: 0 0 0px 50px;
+	margin:0 0 0px 0;
+	background:url(../images/trigger_a.gif) no-repeat;
+	height:46px;
+	line-height: 46px;
+	width:396px;
+	_width:350px;
+	font-size:14px;
+	font-weight:bold;
+	float:left;
+	border-bottom:#004fa0 solid 1px;
+}
+	h2.trigger a {
+	color: #004fa0;
+	text-decoration: none;
+	display: block;
+}
+	h2.trigger a:hover {
+	color: #ccc;
+	
+}
+	h2.active {background-position: left bottom;}
+	.toggle_container {
+	margin: 0 0 0px;
+	padding: 0px 0px 30px 0px;
+	background: #f0f0f0 url(images/toggle_block_stretch.gif) repeat-y left top;
+	overflow: hidden;
+	font-size: 1.2em;
+	border-left:#00b8ca 5px solid;
+	border-right:#ccc 1px solid;
+	border-bottom:#ccc 1px solid;
+	width:440px;
+	clear: both;
+	
+}
+	.toggle_container .block {
+	padding:20px 2px 0px 0px;
+	//background-color:#eeeeee;
+	width:437px;
+	_width: 350px;
+	
+	
+}
+	.toggle_container img {
+	float:left;
+	margin:5px 28px 0px 28px;
+	padding:0px;
+	background:#ddd;
+	border:1px solid #ccc;
+}
+
+#quick-search-box{
+	float:left;
+	width:860px;
+    border:1px solid #CCCCCC;
+    padding:20px 20px 20px 20px;
+    margin:10px 28px 40px 28px;
+    background-color:#F0F0F0;
+}
+#quick-search-box label{
+color:#000000;
+float:left;
+font:bold 12px Arial,Helvetica,sans-serif;
+width:150px;
+}
+#quick-search-box input {
+    border:1px solid #005177;
+    color:#000000;
+    font:12px Arial,Helvetica,sans-serif;
+    height:20px;
+    width:140px;
+}
+#quick-search-box .submit,#quick-search-box .reset,.submit_form .submit,.submit_form .reset{
+    background:none repeat scroll 0 0 #005177;
+    border:1px outset #005177;
+    color:#ffffff;
+    cursor:pointer;
+    font:bold 12px Arial,Helvetica,sans-serif;
+    height:25px;
+    margin-left:5px;
+    text-align:center;
+    width:60px;
+}
+#quick-search-box{
+
+}
+#quick-search-box {
+
+}
+/*  End toggle css */
+
+
+/* GUI Appilication CSS  */
+
+
+.main-gui-appli{
+	margin:10px auto;
+	font:12px Arial, Helvetica, sans-serif;
+
+}
+.gui-appli{
+	margin:10px auto;
+	font:12px Arial, Helvetica, sans-serif;
+	border:#aaa899 double 4px;
+}
+ul.nav-link{
+	width:75%;
+	height:35px;
+	list-style:none;
+	display:block;
+}
+ul.nav-link li{
+	float:left;
+	width:115px;
+	list-style:none;
+	display:inline;
+	font-weight:bold;
+	
+}
+ul.nav-link li a{
+	display:inline;
+	color:#085aac;
+}
+ul.nav-link li a:hover{
+	display:inline;
+	color:#666666;
+}
+.green-lft-curve, .green-rgt-curve, .blue-lft-curve, .blue-rgt-curve{
+	background:url(../images/confirm_tt_green_left.gif) left top no-repeat;
+	height:28px;
+	width:7px;
+}
+
+.green-rgt-curve{
+	background:url(../images/confirm_tt_green_right.gif) left top no-repeat;
+}
+.blue-lft-curve{
+	background:url(../images/confirm_tt_left.gif) left top no-repeat;
+}
+.blue-rgt-curve{
+	background:url(../images/confirm_tt_right.gif) left top no-repeat;
+}
+.green-bg-tile, .blue-bg-tile{
+	background:url(../images/confirm_tt_green_middle.gif) left top repeat-x;
+	//width:1010px;
+	height:28px;
+	font:bold 15px Arial, Helvetica, sans-serif;
+	color:#FFFFFF;
+	line-height:28px;
+}
+.blue-bg-tile{
+	background:url(../images/booking_confirmation_v1.gif) left top repeat-x;
+	font:bold 13px Arial, Helvetica, sans-serif;
+	line-height:28px;
+}
+
+.booking-details, .flight-details{
+    font: 12px Arial,Helvetica,sans-serif;
+    padding: 2px;
+	background:#dedfe3 url(../images/tbl_bg_tile.jpg) left top repeat-x;
+	border: 1px solid #D1D1D1;
+}
+.booking-details input, .flight-details input, textarea{
+
+	}
+.flight-details-inner{
+	border:0px double #aaa899;
+}
+.flight-details th{
+	padding:2px;	
+}
+
+tr.brd{
+	border:#aaa899 groove 1px;
+}
+
+.booking-details td{
+	padding-left:5px;
+}
+.border-box{
+	margin:: 2px;
+	border: 1px solid #D1D1D1;
+	background:#dedfe3 url(../images/tbl_bg_tile.jpg) left top repeat-x;
+}
+.blue_txt{
+	color:#1b76c9;
+	font-size:14px;
+	font-weight:bold;
+}
+.red_txt{
+	color:#F00;
+}
+.gray_txt{
+	color:#333333;
+}
+.dotted_brd{
+	border:#cfcfcf dashed 1px;	
+}
+/*my css start*/
+
+.new_agent_book {
+    height: 20px;
+    width: 184px;
+	
+}
+.new_agent_time {
+    height: 20px;
+    width: 235px;
+
+}
+.new_agent_type {
+    height: 20px;
+    width: 184px;
+	margin-left:84px;
+
+}
+.new_agent_vendor {
+    height: 20px;
+    width: 74px;
+	margin-right: 10px;
+}
+
+.new_agent_contact {
+    height: 20px;
+    width: 262px;
+}
+a.delete_vendor{
+	font: 10px/12px Arial,Helvetica,sans-serif;
+	color:#F00;
+	text-decoration:underline;
+	text-align:left;
+	float:right;
+	padding-right:5px;
+}
+.head_button{
+	width:92px;
+	float:right;
+}
+
+.booking-details td{
+	padding-left:5px;
+	line-height: 25px;
+}
+.input-button{
+	border:none;
+}
+.passenger-info td{
+	padding-left:5px;
+	border: 2px ridge #AAA899;
+	}
+.ui-calander{
+	width:140px;
+	float:left;
+	}
+.address{
+	width:100px;
+	float:left;
+	margin-left:3px;
+}
+.border-none{
+	border:none;
+}
+.border-btm{
+	border:none;
+
+}
+.border-dotted{
+	border-bottom:#666666 dashed 1px;	
+}
+.border-left-btm-brd{
+	border:none;
+	
+}
+.border-left{
+	border:none;
+}
+
+/*-----css start for blue nave box inner--------*/
+.bluebox_saveandclo{
+	width:153px;
+	float:right;
+	padding-left:10px;
+}
+.bluebox_locator{
+	width:153px;
+	float:right;
+}
+.bluebox_add{
+	color: #FF0000;
+    font: 10px/12px Arial,Helvetica,sans-serif;
+    padding-left: 2px;
+}
+.flight-box{
+	font:12px Arial, Helvetica, sans-serif;
+}
+.small-txtbox{
+	width:50px;
+	
+}
+
+.orange_txt{
+	color:#ff2a01;
+	text-decoration:underline;
+	text-transform:capitalize;
+}
+
+
+
+
+/*css start for step 10*/
+.booked-hotel-link{
+	color:#eb5500;
+	}
+	
+.rgt-btm td{
+	padding: 2px;
+	border-right: 1px dashed #D1D1D1;
+	border-bottom: 1px dashed #D1D1D1;
+	}
+.rgt-brd td{
+	padding: 2px;
+	border-right: 1px dashed #D1D1D1;
+	border-top:none;
+	border-bottom:none;
+	border-left:none;
+}
+.fare-details{
+	  border: 1px solid #D1D1D1;
+	  padding:1px;
+	}

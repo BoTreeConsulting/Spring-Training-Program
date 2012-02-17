@@ -1,0 +1,1 @@
+Sessions 4, 8 and 12 were practical sessions where the training team assisted the participants to get a hands-on experience on the topics covered in the previous sessions.

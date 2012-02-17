@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:security="http://www.springframework.org/schema/security"
+	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.1.xsd
+		http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.0.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.1.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
+		
+		<import resource="applicationContext-security.xml"/>
+		<import resource="applicationContext-persistence.xml"/>
+			 		
+		<context:annotation-config />
+ 
+ 		<context:component-scan base-package="com.botreeconsulting.springsecurity" />
+		
+		<!-- Handles GET requests for /resources/** by efficiently serving static content in the ${webappRoot}/resources dir -->
+		<mvc:resources location="/resources/" mapping="/resources/**"/>
+		
+		<!--
+			This tag registers the HandlerMapping and HandlerAdapter required to dispatch requests to your @Controllers. 
+			In addition, it applies sensible defaults based on what is present in your classpath. Such defaults include:
+			
+			1) Using the Spring 3 Type ConversionService as a simpler and more robust alternative to JavaBeans PropertyEditors
+			2) Support for formatting Number fields with @NumberFormat
+			3) Support for formatting Date, Calendar, and Joda Time fields with @DateTimeFormat, if Joda Time is on the classpath 
+			4) Support for validating @Controller inputs with @Valid, if a JSR-303 Provider is on the classpath 
+			5) Support for reading and writing XML, if JAXB is on the classpath 
+			6) Support for reading and writing JSON, if Jackson is on the classpath   
+		 -->
+		<mvc:annotation-driven/>
+		
+		<!-- 
+		     Without the following adapter, we'll get a "Does your handler implement a supported interface like Controller?"
+             This is because mvc:annotation-driven element doesn't declare a SimpleControllerHandlerAdapter
+             For more info
+             See http://stackoverflow.com/questions/3896013/no-adapter-for-handler-exception
+             See http://forum.springsource.org/showthread.php?t=48372&highlight=UrlFilenameViewController	 
+	    -->
+		<bean class="org.springframework.web.servlet.mvc.SimpleControllerHandlerAdapter" />
+		
+		<!-- 
+		      org.springframework.web.servlet.view.ResourceBundleViewResolver
+		      The bundle is typically defined in a properties file, 
+		      located in the class path. The default bundle basename is "views". 
+		-->
+		<bean id="viewResolver" class="org.springframework.web.servlet.view.ResourceBundleViewResolver">
+		     <property name="basename" value="views" />
+		</bean>		
+			    
+</beans>

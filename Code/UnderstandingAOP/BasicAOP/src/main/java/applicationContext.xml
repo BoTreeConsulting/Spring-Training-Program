@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+	
+	<!-- Package  com.botreeconsulting.basicaop -->
+	
+	<bean id="messageBroadcaster" class="com.botreeconsulting.basicaop.MessageBroadcaster"></bean>
+		
+	<bean id="messageManipulator" class="com.botreeconsulting.basicaop.MessageManipulator"></bean>
+	
+	<bean id="beforeAdvice" class="com.botreeconsulting.basicaop.BeforeAdvice"></bean>
+	
+	<bean id="afterAdvice" class="com.botreeconsulting.basicaop.AfterAdvice"></bean>
+	
+	<!-- Package com.botreeconsulting.basicaop.util -->
+	
+	<bean id="proxyFactory" class="org.springframework.aop.framework.ProxyFactory"></bean>
+	
+	<bean id="proxyProvider" class="com.botreeconsulting.basicaop.util.ProxyProvider">
+		<property name="proxyFactory" ref="proxyFactory"></property>
+		<property name="messageManipulator" ref="messageManipulator"></property>
+		<property name="beforeAdvice" ref="beforeAdvice"></property>
+		<property name="afterAdvice" ref="afterAdvice"></property>
+		<property name="simpleAdvice" ref="simpleAdvice"></property>
+	</bean>
+		
+	<!-- Package com.botreeconsulting.basicaop.nextstep -->
+	
+	<bean id="beanOne" class="com.botreeconsulting.basicaop.nextstep.BeanOne"></bean>
+	
+	<bean id="beanTwo" class="com.botreeconsulting.basicaop.nextstep.BeanTwo"></bean>
+	
+	<bean id="simpleAdvice" class="com.botreeconsulting.basicaop.nextstep.SimpleAdvice"></bean>
+	
+	<bean id="simpleStaticPointcut" class="com.botreeconsulting.basicaop.nextstep.SimpleStaticPointcut"></bean>	
+</beans>

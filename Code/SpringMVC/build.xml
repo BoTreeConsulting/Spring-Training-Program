@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="spring-mvc-demo" basedir="." default="deploy">
+	
+	
+	<property name="tomcat.home" value="/home/shardul/Env/apache-tomcat-6.0.33" />
+	<!-- 
+	<property name="dependencies.dir" value="/home/shardul/Env/JARs" />
+	-->
+	<property name="dependencies.dir" value="${basedir}/lib" />
+	<property name="tomcat.lib" value="${tomcat.home}/lib" />
+	
+	<property name="src.dir" value="${basedir}/src/main/java" />
+	<property name="resources.dir" value="${basedir}/src/main/resources" />
+	<property name="src.WEB-INF" value="${basedir}/src/main/webapp/WEB-INF" />
+	
+	<property name="build.dir" value="/home/shardul/spring-hibernate/Spring-MVC/build" />
+    <property name="webAppName" value="spring-mvc-demo" />
+    
+    <property name="dist.dir" value="${build.dir}/${webAppName}" />
+	<property name="dist.WEB-INF" value="${dist.dir}/WEB-INF" />
+	<property name="dist.classes.dir" value="${dist.WEB-INF}/classes" />
+	<property name="dist.lib.dir" value="${dist.WEB-INF}/lib" />
+	<property name="spring.version" value="3.1.0" />
+
+    <property name="war.dest" value="/home/shardul/Env/apache-tomcat-6.0.33/webapps" />
+
+	<property name="deploy.dir" value="${tomcat.home}/webapps" />
+	<property name="deployable.name" value="${tomcat.home}/webapps/${webAppName}.war" />
+	
+	<property name="test.src.dir" value="${basedir}/src/test/java" />
+	<property name="test.classes.dir" value="${build.dir}/test/classes" />
+	
+	<path id="classpath">
+		<fileset dir="${dependencies.dir}">
+			<exclude name="servlet-api*.jar"/>
+			<exclude name="jsp-api*.jar"/>
+			<exclude name="slf4j*1.5.8*.jar"/>
+			<include name="*.jar"/>
+		</fileset>
+		<fileset dir="${tomcat.lib}">
+			<include name="servlet-api*.jar"/>
+            <include name="jsp-api*.jar"/>
+		</fileset>
+		<pathelement location="${dist.classes.dir}"/>
+	</path>
+	
+	<path id="classpath.test">
+		 <pathelement location="${test.classes.dir}"/>
+		 <path refid="classpath" />
+	</path>
+	
+    <target name="clean">
+    	  <delete dir="${build.dir}" />
+    </target>
+	
+	<target name="init">
+        <mkdir dir="${build.dir}"/>
+		<mkdir dir="${test.classes.dir}"/>
+    </target>
+	
+	<target name="copy-resources">
+         <copy todir="${dist.WEB-INF}">
+            <fileset dir="${src.WEB-INF}">
+                <include name="**/*.*"/>
+            </fileset>
+         </copy>
+		<copy todir="${dist.classes.dir}">
+            <fileset dir="${resources.dir}">
+                <include name="*.*"/>
+            </fileset>
+         </copy>
+		<copy todir="${dist.lib.dir}">
+            <fileset dir="${dependencies.dir}">
+                <include name="*.jar"/>
+            	<include name="spring*${spring.version}*.jar"/>
+            	<include name="hibernate-validator*.jar" />
+            	<exclude name="maven*.jar" />
+        		<exclude name="*sources*.jar" />
+        		<exclude name="*javadoc*.jar" />
+            	<exclude name="jibx*.jar" />
+            	<exclude name="servlet-api*.jar" />
+            	<exclude name="jsp-api*.jar" />
+        		<exclude name="junit*.jar" />
+            	<exclude name="plexus*.jar" />
+                <exclude name="commons-io-1.1.jar" />
+                <exclude name="commons-lang-2.1.jar" />
+                <exclude name="log4j-1.2.15.jar" />
+                <exclude name="mysql-connector-java-5.1.6.jar" />
+            	<exclude name="postgresql-8.4-702.jdbc4.jar" />
+            	<exclude name="slf4j-api-1.5.8.jar" />
+            	<exclude name="mysql-connector-java-5.1.6.jar" />
+            	<exclude name="spring*3.0.5*.jar" />
+            	<exclude name="surefire*.jar" />
+            </fileset>
+        </copy>
+	</target>
+	
+	<target name="compile" depends="clean, init, copy-resources">
+		 <javac srcdir="${src.dir}" destdir="${dist.classes.dir}"
+	            debug="on" debuglevel="lines,vars,source">
+		 	<classpath refid="classpath" />
+		 </javac>
+	</target>
+	
+    <target name="compile-test" depends="compile">
+        <javac srcdir="${test.src.dir}" destdir="${test.classes.dir}" 
+        	   debug="true" debuglevel="lines,vars,source">
+        	<classpath refid="classpath.test" />
+        </javac>
+    </target>
+	
+	<target name="executeUnitTests" depends="compile-test">
+		<junit>
+			 <classpath refid="classpath.test" />
+			<formatter type="brief" usefile="false"/>
+			<batchtest>
+				<!--
+				<fileset dir="${test.classes.dir}" 
+					     includes="**/*Test.class" 
+				         excludes="**/*GenericTest*.class, **/TestBase.class, **/UserTest.class"/>
+				 -->
+				<fileset dir="${test.classes.dir}" 
+				         includes="**/UserTest.class" />
+		    </batchtest>
+	    </junit>
+	</target>
+
+	
+    <target name="create-war" depends="compile">
+        <war destfile="${dist.dir}.war" webxml="${dist.WEB-INF}" basedir="${dist.dir}"/>
+    </target>
+	
+	<target name="deploy" depends="create-war">
+		 <delete dir="${deploy.dir}/${webAppName}"></delete>
+		 <delete file="${deployable.name}"></delete>
+		
+		 <copy file="${dist.dir}.war" todir="${deploy.dir}"></copy>
+	</target>
+    
+</project>
+
+				
