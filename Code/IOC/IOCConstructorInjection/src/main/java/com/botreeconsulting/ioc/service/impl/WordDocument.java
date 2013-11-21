@@ -8,7 +8,7 @@ public class WordDocument extends AbstractDocument {
 	
 	@Override
 	public void render() {
-		System.out.println("Rendering PDF document...");
+		System.out.println("Rendering WordDocument...");
 	}
 
 }

@@ -19,7 +19,7 @@
                        
 <hibernate-configuration>
 	<!-- SessionFactory is a global factory responsible for a particular database. -->
-	<session-factory>
+	<session-factory name="test">
 		<!-- DB Connection Settings -->
 		<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
 		<!-- training_models_noannotations_test schema must be created prior running the application  -->

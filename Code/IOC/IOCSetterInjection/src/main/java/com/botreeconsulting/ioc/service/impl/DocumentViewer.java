@@ -10,6 +10,11 @@ public class DocumentViewer {
 		System.out.println("Instantiating DocumentViewer...");
 	}
 	
+	public DocumentViewer(Document document) {
+		System.out.println("Constructor injection");
+		this.document = document;
+	}
+	
 	public void viewDocument() {
 		
 		document.open();
@@ -24,6 +29,7 @@ public class DocumentViewer {
 	}
 
 	public void setDocument(Document document) {
+		System.out.println("setting the document property");
 		this.document = document;
 	}
 	

@@ -6,6 +6,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.botreeconsulting.ioc.service.impl.DocumentViewer;
+import com.botreeconsulting.ioc.service.impl.PDFDocument;
 import com.botreeconsulting.ioc.service.impl.WordDocument;
 
 public class DocumentViewerTest extends TestCase {
@@ -17,7 +18,7 @@ public class DocumentViewerTest extends TestCase {
 		
 		DocumentViewer viewer = (DocumentViewer) ctx.getBean("documentViewer");
 		
-		assertEquals(WordDocument.class, viewer.getDocument().getClass());
+		assertEquals(PDFDocument.class, viewer.getDocument().getClass());
 
 		viewer.viewDocument();
 		

@@ -6,7 +6,7 @@
         http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
 
     <bean name="documentViewer" class="com.botreeconsulting.ioc.service.impl.DocumentViewer">
-    	<constructor-arg ref="wordDocument"/>
+    	<constructor-arg ref="pdfDocument"/>
     </bean>
 
 	<bean name="pdfDocument" class="com.botreeconsulting.ioc.service.impl.PDFDocument"/>
